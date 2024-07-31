@@ -119,6 +119,32 @@
     <input type="text" v-model="pwdValue2" @input="changePwd1" placeholder="비번 확인을 입력하세요">
     <p v-if="errPwd">{{ errPwd }}</p>
   </div>
+  <!--  메소드 computed  -->
+  <div class="section">
+    <p>{{ hello() }}</p>
+    <p>{{ hello() }}</p>
+    <p>{{ hello() }}</p>
+    <br/>
+    <p>{{ hello2 }}</p>
+    <p>{{ hello2 }}</p>
+    <p>{{ hello2 }}</p>
+  </div>
+  <div class="section">
+    성: <input type="text" v-model="lastName" @input="changeLastName"><br/>
+    이름: <input type="text" v-model="firstName" @input="changeFirstName"><br/>
+    <p>method: {{ methodFullName() }}</p>
+    <p>method: {{ methodFullName() }}</p>
+    <p>computed: {{ computedFullName }}</p>
+    <p>computed: {{ computedFullName }}</p>
+    <p>fullName: {{ fullName }}</p>
+    <p>fullName: {{ fullName }}</p>
+  </div>
+  <!-- watch -->
+  <div class="section">
+    <h4>user_info : {{ userInfo }}</h4>
+    <input type="text" v-model="userName"><br/>
+    <input type="text" v-model="userAge">
+  </div>
 </template>
 
 <script>
@@ -172,7 +198,21 @@ export default {
       pwdValue1: '',
       pwdValue2: '',
       errPwd : '비번을 입력하세요',
+      lastName : '',
+      firstName : '',
+      fullNamae : '',
+      userName : '홍길동',
+      userAge : '30',
+      userInfo : '',
     };
+  },
+  watch : {
+    userName() {
+      this.userInfo = this.userName + '(' + this.userAge + ')';
+    },
+    userAge() {
+      this.userInfo = this.userName + '(' + this.userAge + ')';
+    }
   },
   setup() {
     
@@ -185,6 +225,17 @@ export default {
   },
   unmounted() {
     
+  },
+  computed : {
+    hello2() {
+      // 1번만 호출
+      // console.log('hello2 호출');
+      return '안녕하세요, 반가워요.';
+    },
+    computedFullName() {
+      console.log('computeFullName 호출');
+      return this.lastName + this.firstName;
+    }
   },
   methods: {
     increaseCounter(){
@@ -213,8 +264,19 @@ export default {
       }
     },
     changePwd1() {
+      // if(this.pwdValue1 === pwdPattern.number(this))
+      
+      // if(this.pwdValue1 < pwdPattern && this.pwdValue2 < pwdPattern) {
+      //   this.errPwd = '8자리 이하로 입력해주세요.'
+      // } else {
+      //   this.errPwd = '8자리 이하로 잘 입력했습니다.'
+      // }
+
       if(this.pwdValue1 === '') {
         this.errPwd = '비번을 입력하세요';
+      } else if(this.pwdValue1.length > 7) {
+        this.errPwd = '8자 이하로 작성 바람';
+        this.pwdValue1 = '';
       } else if(this.pwdValue2 === '') {
         this.errPwd = '비번확인을 입력하세요';
       } else if(this.pwdValue1 === this.pwdValue2) {
@@ -222,6 +284,26 @@ export default {
       } else {
         this.errPwd = '비번이 일치하지 않습니다';
       }
+    },
+    hello() {
+      // 여러번 호출
+      // console.log('hello() 호출');
+      return '안녕하세요, 반갑습니다.';
+    },
+    changeLastName() {
+      // lastName 변경 시 fullName 업데이트
+      console.log('changeLastName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    changeFirstName() {
+      // firstName 변경 시 fullName 업데이트
+      console.log('changeFirstName 호출');
+      this.fullName = this.lastName + this.firstName;
+    },
+    methodFullName() {
+      // 메소드로 fullName 계산
+      console.log('methodFullName 호출');
+      return this.lastName + this.firstName;
     },
   }
 };
