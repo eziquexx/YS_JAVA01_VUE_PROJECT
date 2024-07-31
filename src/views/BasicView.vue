@@ -93,12 +93,31 @@
   <div class="section">
     <button v-on:click="increaseCounter">클릭(증가)</button>
     <button @:click="decreaseCounter">클릭(감소)</button>
-    <p>counter: {{ counter }}</p>
-    <input type="number" v-model="countValue">
-    <button @:click="applyCounter">적용</button>
-
+    <p>counter: {{ counter }}</p>    
     <button @:click="increaseCounter(), showMsg()">증가후 알림창</button>
     <button @:click="decreaseCounter(), showMsg()">감소후 알림창</button>
+    <br/>
+    <input type="number" v-model="countValue">
+    <button @:click="applyCounter">적용</button>
+    <br/>
+  </div>
+  <div class="section">
+    <select v-model="cityValue" @change="changeCity">
+      <option value="서울">서울</option>
+      <option value="부산">부산</option>
+      <option value="대구">대구</option>
+      <option value="수원">수원</option>
+    </select>
+  </div>
+  <div class="section">
+    <input type="text" v-model="emailValue" @input="changeEmail" placeholder="이메일을 입력">
+    <p v-if="errEmail">{{ errEmail }}</p>
+    <!-- <p>{{ emailValue }} / {{ errEmail }}</p> -->
+  </div>
+  <div class="section">
+    <input type="text" v-model="pwdValue1" @input="changePwd1" placeholder="비번을 입력하세요"><br/>
+    <input type="text" v-model="pwdValue2" @input="changePwd1" placeholder="비번 확인을 입력하세요">
+    <p v-if="errPwd">{{ errPwd }}</p>
   </div>
 </template>
 
@@ -147,6 +166,12 @@ export default {
       ],
       counter : 0,
       countValue : 10,
+      cityValue : '수원',
+      emailValue : '',
+      errEmail : '',
+      pwdValue1: '',
+      pwdValue2: '',
+      errPwd : '비번을 입력하세요',
     };
   },
   setup() {
@@ -173,7 +198,31 @@ export default {
     },
     showMsg() {
       alert('현재 값 => ' + this.counter);
-    }
+    },
+    changeCity() {
+      alert('선택한 도시: ' + this.cityValue);
+    },
+    changeEmail() {
+      this.emailValue
+      // 이메일 형식 정규 표현식
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(this.emailValue === '' || emailPattern.test(this.emailValue)) {
+        this.errEmail = '';
+      } else {
+        this.errEmail = '이메일 형식에 어긋납니다.'
+      }
+    },
+    changePwd1() {
+      if(this.pwdValue1 === '') {
+        this.errPwd = '비번을 입력하세요';
+      } else if(this.pwdValue2 === '') {
+        this.errPwd = '비번확인을 입력하세요';
+      } else if(this.pwdValue1 === this.pwdValue2) {
+        this.errPwd = '비번이 일치합니다.';
+      } else {
+        this.errPwd = '비번이 일치하지 않습니다';
+      }
+    },
   }
 };
 </script>
@@ -196,7 +245,7 @@ export default {
   h2.title {
     display: block;
     color: #f52563;
-    margin: 50px 0 30px;
+    margin: 100px 0 30px;
   }
   div.section {
     width: 80%;
