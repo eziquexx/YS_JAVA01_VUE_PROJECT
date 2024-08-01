@@ -284,6 +284,33 @@
       <span> => {{ msgPwd2 }}</span>
     </p>
   </div>
+
+  <div class="section">
+    <h2 class="title">method로 만들었을 때</h2>
+    <div>
+      <label> 성 : <input type="text" v-model="familyName1" @input="makeFullName1"> </label><br/>
+      <label> 이름 : <input type="text" v-model="name1" @input="makeFullName1"> </label>
+      <p>성명(method) : {{ fullName1 }}</p>
+    </div>
+
+    <div class="line"></div>
+
+    <h2 class="title">computed로 만들었을 때</h2>
+    <div>
+      <label> 성 : <input type="text" v-model="familyName2"></label><br/>
+      <label> 이름 : <input type="text" v-model="name2"> </label>
+      <p>성명(computed) : {{ makeFullName2 }}</p>
+    </div>
+
+    <div class="line"></div>
+
+    <h2 class="title">watch로 만들었을 때</h2>
+    <div>
+      <label> 성 : <input type="text" v-model="familyName3" @input="makeFullName3"> </label><br/>
+      <label> 이름 : <input type="text" v-model="name3"> </label>
+      <p>성명(watch) : {{ fullName3 }}</p>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -330,6 +357,15 @@ export default {
       pwdValue2: '',
       msgPwd: '비밀번호를 입력하세요',
       msgPwd2: '비밀번호 확인을 입력하세요',
+      familyName1:'',
+      name1:'',
+      fullName1:'',
+      familyName2:'',
+      name2:'',
+      familyName3:'',
+      name3:'',
+      fullName3:'',
+      
     }  
   },
   watch : {
@@ -377,6 +413,12 @@ export default {
       }
 
       return this.mathTxt;
+    },
+    familyName3(){
+      this.fullName3 = this.familyName3+ ' - ' + this.name3;
+    },
+    name3(){
+      this.fullName3 = this.familyName3+ ' - ' + this.name3;
     }
   },
   methods: {
@@ -460,6 +502,14 @@ export default {
       } else {
         this.msgPwd2 = '비밀번호가 일치하지 않습니다.'
       }
+    },
+    makeFullName1(){
+      this.fullName1 = this.familyName1+ ' - ' + this.name1;
+    }
+  },
+  computed: {
+    makeFullName2(){
+      return this.familyName2+ ' - ' + this.name2;
     }
   }
 }
