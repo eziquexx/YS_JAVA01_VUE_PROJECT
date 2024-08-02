@@ -6,6 +6,7 @@ import BasicView from '../views/BasicView.vue'
 import MembershipView from '../views/MembershipView.vue'
 import PropsView from '@/views/PropsView.vue'
 import PropsView2 from '@/views/PropsView2.vue'
+import PopupView from '../views/PopupView.vue'
 
 const routes = [
   {
@@ -50,6 +51,11 @@ const routes = [
     path: '/props2',
     name: 'props2',
     component: PropsView2
+  },
+  {
+    path: '/popup',
+    name: 'popup',
+    component: PopupView
   }
 ]
 

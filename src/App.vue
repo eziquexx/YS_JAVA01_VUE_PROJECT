@@ -8,6 +8,7 @@
     <router-link to="/membership">05. 회원가입 폼</router-link>
     <router-link to="/props1">06. props 공부 - 1</router-link>
     <router-link to="/props2">07. props 공부 - 2</router-link>
+    <router-link to="/popup">08. 팝업(pop up) 폼</router-link>
     <router-link to="/test"> --- 테스트페이지</router-link>
   </nav>
   <router-view/>

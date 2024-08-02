@@ -2,8 +2,11 @@
   <div class="son">
     <p>둘째 아들 : {{ message }}</p>
     <cute-g-son21 ref="gson21"/>
-    <cute-g-son22 ref="gson22"/>
+    <cute-g-son22 ref="gson22" @event_report="receiveEvent"/>
     <button @click="clickSon20_2">둘째아들버튼2</button>
+
+    <input type="text" v-model="sndMsg">
+    <input type="button" value="둘째아들버튼" @click="clickBtn">
   </div>
 </template>
 
@@ -22,6 +25,7 @@ export default {
   data() {
     return {
       message: '',
+      sndMsg: '',
     };
   },
   watch: {
@@ -45,6 +49,13 @@ export default {
       this.$refs.gson21.changeTextColor(idx, data);
       this.$refs.gson22.changeTextColor(idx, data);
     },
+    clickBtn() {
+      this.$refs.gson21.message = this.sndMsg;
+      this.$refs.gson22.message = this.sndMsg;
+    },
+    receiveEvent(data) {
+      this.message=(data);
+    }
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.

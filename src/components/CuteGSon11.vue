@@ -1,6 +1,6 @@
 <template>
   <div class="gson">
-    <p v-bind:style="{color:tcolor}">큰집손자1: {{ message }} </p>
+    <p v-bind:style="{color:tcolor}">큰집손자1: {{ message }}</p>
     <button @click="clickMsg">장손메시지</button>
   </div>
 </template>
@@ -39,7 +39,8 @@ export default {
       if(this.index == idx) {
         this.tcolor=data;
       }
-    }
+    },
+
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.

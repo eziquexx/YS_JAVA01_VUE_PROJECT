@@ -2,6 +2,8 @@
   <div class="gson">
     <p v-bind:style="{color:tcolor}">큰집손자2: {{ message }}</p>
     <button @click="clickMsg">둘째메시지</button>
+    <input type="text" v-model="gsonMsg">
+    <input type="button" value="손자12" @click="clickGson12">
   </div>
 </template>
 
@@ -38,6 +40,7 @@ export default {
       message : '',
       index: 2,
       tcolor: 'red',
+      gsonMsg: '',
     };
   },
   watch: {
@@ -60,6 +63,9 @@ export default {
       if(this.index == idx) {
         this.tcolor=data;
       }
+    },
+    clickGson12() {
+      this.$emit('event_report', this.gsonMsg)
     }
   },
   setup() {

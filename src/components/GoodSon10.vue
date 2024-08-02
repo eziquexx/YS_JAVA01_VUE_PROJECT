@@ -1,8 +1,8 @@
 <template>
   <div class="son">
-    <p>큰 아들 : {{ message }}</p>
-    <cute-g-son11 ref="gson11"/>
-    <cute-g-son12 ref="gson12"/>
+    <p>큰 아들 : {{ message }} {{ msg }}</p>
+    <cute-g-son11 ref="gson11" />
+    <cute-g-son12 ref="gson12" @event_report="receiveEvent"/>
     <input type="text" v-model="sndMessage">
     <button @click="clickSon10_1">큰아들버튼1</button>
     <button @click="clickSon10_2">큰아들버튼2</button>
@@ -36,10 +36,7 @@ export default {
     // 데이터를 감시하고 처리할 로직을 작성합니다.
   },
   computed: {
-    // sample2() {
-    //   return '';
-    // }
-    // 필요한 계산된 속성을 정의합니다.
+
   },
   methods: {
     clickSon10_1() {
@@ -62,6 +59,9 @@ export default {
     clickSon10_3() {
       this. message = '큰아들이 버튼을 눌렀음'
       this.$refs.gson11.message = this.sndMessage;
+    },
+    receiveEvent(data) {
+      this.message=(data);
     }
   },
   setup() {

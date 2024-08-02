@@ -1,17 +1,11 @@
 <template>
   <div class="">
-    <h2>부모-자식 관련 수업</h2>
-    <h3>할아버지 : {{ message }}</h3>
-    <GoodSon10 ref="son10"/>
-    <GoodSon20 ref="son20"/>
-    <input type="button" value="할아버지버튼1" @click="clickGpapa_1">
-    <input type="button" value="할아버지버튼2" @click="clickGpapa_2">
+    <!-- 내용을 추가하세요 -->
+     Test View 페이지입니다.
   </div>
 </template>
 
 <script>
-import GoodSon10 from '@/components/GoodSon10.vue';
-import GoodSon20 from '@/components/GoodSon20.vue';
 export default {
   name: 'TestView',
   props: {
@@ -37,31 +31,30 @@ export default {
     //}
   },
   components: {
-    GoodSon10,
-    GoodSon20
+    // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
-      message: '',
+      // 컴포넌트의 데이터를 초기화합니다.
     };
   },
   watch: {
-
+    // sample1() {
+    //   console.log('');
+    // }
+    // 데이터를 감시하고 처리할 로직을 작성합니다.
   },
   computed: {
-
+    // sample2() {
+    //   return '';
+    // }
+    // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    clickGpapa_1() {
-      // 둘째 아들의 막내한테 메세지 보내기. 글씨를 파란색으로 바꾸기.
-      this.message = '할아버지가 둘째 아들의 막내 아들 호출함';
-      this.$refs.son20.clickSon20_2();
-    },
-    clickGpapa_2() {
-      // alert('clickGpapa() 시작');
-      this.$refs.son10.changeTextColor(2, 'blue');
-      // alert('clickGpapa() 끝');
-    }
+    // sample3() {
+    //   return '';
+    // }
+    // 컴포넌트에서 사용할 메서드를 정의합니다.
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -79,7 +72,5 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  margin: 40px 0;
-}
+/* 스타일을 추가하세요 */
 </style>

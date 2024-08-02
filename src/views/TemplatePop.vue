@@ -1,12 +1,20 @@
 <template>
-  <div class="gson">
-    <p v-bind:style="{color:tcolor}">작은집손자1 : {{ message }}</p>
+  <div class="pop">
+    <header>
+        <slot name="header"></slot>
+    </header>
+    <main>
+        <slot></slot>
+    </main>
+    <footer>
+        <slot name="footer"></slot>
+    </footer>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CuteGSon21',
+  name: 'TemplatePop',
   props: {
     // 문자열 타입의 prop 예시
     //sampleString: {
@@ -34,9 +42,7 @@ export default {
   },
   data() {
     return {
-      index: 1,
-      tcolor: 'red',
-      message : '',
+      // 컴포넌트의 데이터를 초기화합니다.
     };
   },
   watch: {
@@ -52,11 +58,10 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    changeTextColor(idx, data) {
-      if(this.index == idx) {
-        this.tcolor=data;
-      }
-    },
+    // sample3() {
+    //   return '';
+    // }
+    // 컴포넌트에서 사용할 메서드를 정의합니다.
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -74,15 +79,27 @@ export default {
 </script>
 
 <style scoped>
-.son {
-  background-color: moccasin;
+.pop{
+  width:400px;
+  margin: 10px auto;
+  padding:30px 20px;
+  background-color:#e9e9e9;
+  border: 1px solid #b6b6b6;
+  border-radius : 10px;
+  box-shadow: 0 14px 20px -2px rgba(0, 0, 0, 0.3);
 }
-.gson {
-  background-color: rgb(230, 230, 107);
+
+header {
+  /* background-color:orange; */
+  border-radius : 5px;  
+  margin-bottom: 16px;
+  font-size: 24px;
 }
-.gson button {
-  padding: 3px 6px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+main { padding:20px;}
+footer{
+  /* background-color: brown; */
+  border-radius : 5px; 
+  margin-top: 20px;
 }
+
 </style>
