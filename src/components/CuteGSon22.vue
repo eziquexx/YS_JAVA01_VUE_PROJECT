@@ -1,6 +1,7 @@
 <template>
   <div class="gson">
-    <p>작은집집손자2</p>
+    <p v-bind:style="{color:tcolor}">작은집손자2 : {{ message }}</p>
+    <button @click="clickMsg">둘째버튼</button>
   </div>
 </template>
 
@@ -15,7 +16,9 @@ export default {
   },
   data() {
     return {
-      // 컴포넌트의 데이터를 초기화합니다.
+      index: 2,
+      message: '',
+      tcolor: 'red',
     };
   },
   watch: {
@@ -31,10 +34,14 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
+    clickMsg() {
+      this.message = '둘째가 버튼 눌렀음.'
+    },
+    changeTextColor(idx, data) {
+      if(this.index == idx) {
+        this.tcolor=data;
+      }
+    },
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -57,5 +64,10 @@ export default {
 }
 .gson {
   background-color: yellow;
+}
+.gson button {
+  padding: 3px 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 </style>

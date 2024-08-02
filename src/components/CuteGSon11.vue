@@ -1,6 +1,7 @@
 <template>
   <div class="gson">
-    <p>큰집손자1</p>
+    <p v-bind:style="{color:tcolor}">큰집손자1: {{ message }} </p>
+    <button @click="clickMsg">장손메시지</button>
   </div>
 </template>
 
@@ -8,33 +9,14 @@
 export default {
   name: 'CuteGSon11',
   props: {
-    // 문자열 타입의 prop 예시
-    //sampleString: {
-    //  type: String,
-    //  default: ''
-    //},
-    // 숫자 타입의 prop 예시
-    //sampleNumber: {
-    //  type: Number,
-    //  default: 0
-    //},
-    // 배열 타입의 prop 예시
-    //sampleArray: {
-    //  type: Array,
-    //  default: () => []
-    //},
-    // 객체 타입의 prop 예시
-    //sampleObject: {
-    //  type: Object,
-    //  default: () => ({})
-    //}
   },
   components: {
-    // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
-      // 컴포넌트의 데이터를 초기화합니다.
+      message: '',
+      index: 1,
+      tcolor: 'red',
     };
   },
   watch: {
@@ -50,10 +32,14 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
+    clickMsg() {
+      this.message = '장손이 버튼을 눌렀습니다.';
+    },
+    changeTextColor(idx, data) {
+      if(this.index == idx) {
+        this.tcolor=data;
+      }
+    }
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -76,5 +62,10 @@ export default {
 }
 .gson {
   background-color: yellow;
+}
+.gson button {
+  padding: 3px 6px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 </style>

@@ -1,8 +1,11 @@
 <template>
   <div class="son">
-    <p>큰 아들</p>
-    <cute-g-son11 />
-    <cute-g-son12 />
+    <p>큰 아들 : {{ message }}</p>
+    <cute-g-son11 ref="gson11"/>
+    <cute-g-son12 ref="gson12"/>
+    <button @click="clickSon10_1">큰아들버튼1</button>
+    <button @click="clickSon10_2">큰아들버튼2</button>
+    <button @click="clickSon10">큰아들버튼1,2</button>
   </div>
 </template>
 
@@ -20,7 +23,7 @@ export default {
   },
   data() {
     return {
-      // 컴포넌트의 데이터를 초기화합니다.
+      message : '',
     };
   },
   watch: {
@@ -36,10 +39,23 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
+    clickSon10_1() {
+      this.message = '큰아들이 첫번째 버튼을 눌렀습니다.';
+      this.$refs.gson11.clickMsg();
+    },
+    clickSon10_2() {
+      this.message = '큰아들이 두번째 버튼을 눌렀습니다.'
+      this.$refs.gson12.clickMsg('큰아버지가 둘째아들에게 명령함');
+    },
+    clickSon10() {
+      this.message = '큰아들이 자식1, 2의 메세지를 불러왔습니다.'
+      this.$refs.gson11.clickMsg();
+      this.$refs.gson12.clickMsg();
+    },
+    changeTextColor(idx, data) {
+      this.$refs.gson11.changeTextColor(idx, data);
+      this.$refs.gson12.changeTextColor(idx, data);
+    },
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -63,7 +79,11 @@ export default {
   margin: 20px;
 }
 .gson {
-  background-color: yellow;
+  background-color: rgb(137, 165, 202);
   margin: 20px;
+}
+.son button {
+  padding: 6px;
+  margin: 4px;
 }
 </style>

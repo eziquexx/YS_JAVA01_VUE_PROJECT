@@ -1,8 +1,9 @@
 <template>
   <div class="son">
-    <p>둘째 아들</p>
-    <cute-g-son21/>
-    <cute-g-son22/>
+    <p>둘째 아들 : {{ message }}</p>
+    <cute-g-son21 ref="gson21"/>
+    <cute-g-son22 ref="gson22"/>
+    <button @click="clickSon20_2">둘째아들버튼2</button>
   </div>
 </template>
 
@@ -20,7 +21,7 @@ export default {
   },
   data() {
     return {
-      // 컴포넌트의 데이터를 초기화합니다.
+      message: '',
     };
   },
   watch: {
@@ -36,10 +37,14 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
+    clickSon20_2() {
+      this.message = '둘째 아들이 본인의 막내를 호출함';
+      this.$refs.gson22.clickMsg();
+    },
+    sendOrder(idx, data) {
+      this.$refs.gson11.changeTextColor(idx, data);
+      this.$refs.gson12.changeTextColor(idx, data);
+    },
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -63,7 +68,11 @@ export default {
   margin: 20px;
 }
 .gson {
-  background-color: yellow;
+  background-color: rgb(194, 194, 109);
   margin: 20px;
+}
+.son button {
+  padding: 6px;
+  margin: 4px;
 }
 </style>
