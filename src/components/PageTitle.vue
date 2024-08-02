@@ -1,45 +1,53 @@
 <template>
-  <div class="">
-    <h2>부모-자식 관련 수업</h2>
-    <GoodSon10 />
-    <GoodSon20 />
+  <div class="page_title">
+    <h2>Page Title - 자식 컴포넌트</h2>
+    <p>제목: {{ title }}</p>
+    <p>나이: {{ age+1 }}</p>
+    <p>취미: {{ hobbies }}</p>
+    <p>부: {{ family.papa }}, 모 {{ family.mom }}</p>
+    <p>함수 결과: {{ func() }}</p>
   </div>
 </template>
 
 <script>
-import GoodSon10 from '@/components/GoodSon10.vue';
-import GoodSon20 from '@/components/GoodSon20.vue';
 export default {
-  name: 'TestView',
+  name: 'PageTitle',
   props: {
-    // 문자열 타입의 prop 예시
-    //sampleString: {
-    //  type: String,
-    //  default: ''
-    //},
-    // 숫자 타입의 prop 예시
-    //sampleNumber: {
-    //  type: Number,
-    //  default: 0
-    //},
-    // 배열 타입의 prop 예시
-    //sampleArray: {
-    //  type: Array,
-    //  default: () => []
-    //},
+    // 컴포넌트의 데이터를 초기화합니다.
+    title: {
+      type: String,
+      default: '제목없음',
+    },
+    // Number
+    age: {
+      type: Number,
+      default: 0,
+    },
+    // 배열 타입의 prop 예시. Array
+    hobbies: {
+      type: Array,
+      default: () => ['바둑', '낚시']
+    },
     // 객체 타입의 prop 예시
-    //sampleObject: {
-    //  type: Object,
-    //  default: () => ({})
-    //}
+    family: {
+      type: Object,
+      default: () => ({}),
+    },
+    // 함수 타입 props
+    func: {
+      type: Function,
+      default: function() {
+        return '기본 자식 함수'
+      }
+    }
   },
   components: {
-    GoodSon10,
-    GoodSon20
+    // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
       // 컴포넌트의 데이터를 초기화합니다.
+      funcName: '',
     };
   },
   watch: {
@@ -76,7 +84,12 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  margin: 40px 0;
+.page_title {
+  background-color: rgb(173, 192, 68);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.page_title p {
+  margin: 10px 0;
 }
 </style>

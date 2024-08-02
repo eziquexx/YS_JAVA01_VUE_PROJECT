@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TestView from '../views/TestView.vue'
+import TestViewCopy from '@/views/TestViewCopy.vue'
 import BasicView from '../views/BasicView.vue'
 import MembershipView from '../views/MembershipView.vue'
-import DeepView from '@/views/DeepView.vue'
+import PropsView from '@/views/PropsView.vue'
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     component: TestView
   },
   {
+    path: '/testcopy',
+    name: 'testcopy',
+    component: TestViewCopy
+  },
+  {
     path: '/basic',
     name: 'basic',
     component: BasicView
@@ -35,9 +41,9 @@ const routes = [
     component: MembershipView
   },
   {
-    path: '/deep',
-    name: 'deep',
-    component: DeepView
+    path: '/props',
+    name: 'props',
+    component: PropsView
   }
 ]
 

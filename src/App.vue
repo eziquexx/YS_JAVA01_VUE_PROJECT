@@ -1,11 +1,13 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/about">About</router-link>
-    <router-link to="/test">테스트</router-link>
-    <router-link to="/membership">회원가입</router-link>
-    <router-link to="/basic">5.컴포넌트(기본)</router-link>
-    <router-link to="/deep">8.콤포넌트(심화)</router-link>
+    <div class="menuTitle">[ 수업 목록 ]</div>
+    <router-link to="/">01. Home</router-link>
+    <router-link to="/about">02. About</router-link>
+    <router-link to="/basic">03. 컴포넌트(기본)</router-link>
+    <router-link to="/testCopy">04. 컴포넌트(기본/복습)</router-link>
+    <router-link to="/membership">05. 회원가입 폼</router-link>
+    <router-link to="/props">06. props 공부</router-link>
+    <router-link to="/test"> --- 테스트페이지</router-link>
   </nav>
   <router-view/>
 </template>
@@ -30,23 +32,39 @@ nav {
   right:10px;
   display: flex;
   flex-direction:column;
-  background-color: white;
-  padding:10px 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 26px;
   box-shadow: 0 13px 27px -5px rgba(50,50,93,0.25),
               0  8px 16px -8px rgba(0,0,0,0.3),
               0 -6px 16px -6px rgba(0,0,0,0.25);
   border-radius: 5px;
+  transition: background-color 0.4s ease;
+}
+nav:hover {
+  background-color: rgba(255, 255, 255, 1);
 }
 nav a {
   text-decoration: none;
-  color : #0008FC;
+  color : rgba(50, 54, 172, 0.4);
   text-transform:uppercase;
   font-size: 12px;
-  text-align:center;
+  text-align: left;
   font-weight: 600;
+  transition: color 0.4s ease;
+}
+nav:hover a {
+  color: rgba(50, 54, 172, 1);
+}
+nav a:hover {
+  color: rgb(76, 161, 187);
 }
 nav a:not(:last-child){
   margin-bottom: 10px;
+}
+nav .menuTitle {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
