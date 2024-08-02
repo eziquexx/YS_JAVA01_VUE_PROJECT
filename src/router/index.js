@@ -5,6 +5,7 @@ import TestViewCopy from '@/views/TestViewCopy.vue'
 import BasicView from '../views/BasicView.vue'
 import MembershipView from '../views/MembershipView.vue'
 import PropsView from '@/views/PropsView.vue'
+import PropsView2 from '@/views/PropsView2.vue'
 
 const routes = [
   {
@@ -41,9 +42,14 @@ const routes = [
     component: MembershipView
   },
   {
-    path: '/props',
-    name: 'props',
+    path: '/props1',
+    name: 'props1',
     component: PropsView
+  },
+  {
+    path: '/props2',
+    name: 'props2',
+    component: PropsView2
   }
 ]
 

@@ -6,7 +6,8 @@
     <router-link to="/basic">03. 컴포넌트(기본)</router-link>
     <router-link to="/testCopy">04. 컴포넌트(기본/복습)</router-link>
     <router-link to="/membership">05. 회원가입 폼</router-link>
-    <router-link to="/props">06. props 공부</router-link>
+    <router-link to="/props1">06. props 공부 - 1</router-link>
+    <router-link to="/props2">07. props 공부 - 2</router-link>
     <router-link to="/test"> --- 테스트페이지</router-link>
   </nav>
   <router-view/>

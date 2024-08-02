@@ -3,9 +3,11 @@
     <p>큰 아들 : {{ message }}</p>
     <cute-g-son11 ref="gson11"/>
     <cute-g-son12 ref="gson12"/>
+    <input type="text" v-model="sndMessage">
     <button @click="clickSon10_1">큰아들버튼1</button>
     <button @click="clickSon10_2">큰아들버튼2</button>
     <button @click="clickSon10">큰아들버튼1,2</button>
+    <button @click="clickSon10_3">큰아들버튼3</button>
   </div>
 </template>
 
@@ -24,6 +26,7 @@ export default {
   data() {
     return {
       message : '',
+      sndMessage : '',
     };
   },
   watch: {
@@ -56,6 +59,10 @@ export default {
       this.$refs.gson11.changeTextColor(idx, data);
       this.$refs.gson12.changeTextColor(idx, data);
     },
+    clickSon10_3() {
+      this. message = '큰아들이 버튼을 눌렀음'
+      this.$refs.gson11.message = this.sndMessage;
+    }
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.

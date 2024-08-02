@@ -41,9 +41,9 @@ export default {
       this.message = '둘째 아들이 본인의 막내를 호출함';
       this.$refs.gson22.clickMsg();
     },
-    sendOrder(idx, data) {
-      this.$refs.gson11.changeTextColor(idx, data);
-      this.$refs.gson12.changeTextColor(idx, data);
+    changeTextColor(idx, data) {
+      this.$refs.gson21.changeTextColor(idx, data);
+      this.$refs.gson22.changeTextColor(idx, data);
     },
   },
   setup() {
