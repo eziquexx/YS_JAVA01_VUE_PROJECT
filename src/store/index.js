@@ -8,9 +8,8 @@ const store = createStore(
     //상태초기화 (vue: data 유사)
     state() {
       return {
-        user: {
-
-        },
+        user: {},
+        members: [],
       }
     },
     getters: {
@@ -23,6 +22,15 @@ const store = createStore(
       setUser(state, data){
         // state.user에 data 값을 넣어주겠다.
         state.user = data;
+      },
+      setMemberList(state, members){
+        state.members = members;
+      },
+      addMember(state, member) {
+        state.members.push(member);
+      },
+      removeMember(state, memberIndex) {
+        state.members.splice(memberIndex, 1);
       }
     },
     actions: {

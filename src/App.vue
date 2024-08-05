@@ -15,6 +15,7 @@
     <router-link to="/calculator4">09. 계산기 (4)</router-link>
     <router-link to="/mixin">09. Mixin</router-link>
     <router-link to="/user">11. vuex예제 1</router-link>
+    <router-link to="/member">11. vuex예제 2(회원목록)</router-link>
     <router-link to="/test"> --- 테스트페이지</router-link>
   </nav>
   <router-view/>
