@@ -11,7 +11,7 @@
 <script>
 import { reactive, computed, toRefs } from 'vue';
 function plusNumbers(){
-  // 반응형 상태 객체: 속성 변경될 때마다 자동으로 DOM업데이트
+  // 반응형 상태 객체: 속성이 변경될 때마다 자동으로 DOM업데이트
   let state = reactive({
     num1: 0, // 첫번째 텍스트박스와 바인딩될 숫자 상태
     num2: 0, // 두번째 텍스트박스와 바인딩될 숫자 상태
@@ -26,7 +26,7 @@ export default {
   setup() {
     // 구조분해할당으로 num1, num2, result값을 얻기
     let {num1, num2, result} = plusNumbers();
-    
+
     // 구조분해된 변수값을 반환
     return { num1, num2, result }
   }
