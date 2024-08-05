@@ -1,6 +1,7 @@
 <template>
   <div class="">
     <h3>CalculatorView2</h3>
+    <p>키보드 키가 up 되야지 입력됨</p>
     <input type="text" v-model="state.num1" @keyup="plusNumbers"><span> + </span>
     <input type="text" v-model="state.num2" @keyup="plusNumbers"><span> = </span>
     <span> {{ state.result }} </span>
