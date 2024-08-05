@@ -1,75 +1,38 @@
 <template>
   <div class="">
-    CalculatorView3
+    <h3>CalculatorView3</h3>
+    <p>입력하는 순간 변경됨</p>
+    <input type="text" v-model="num1"><span> + </span>
+    <input type="text" v-model="num2"><span> = </span>
+    <span> {{ result }} </span>
   </div>
 </template>
 
 <script>
+import { reactive, computed, toRefs } from 'vue';
+function plusNumbers(){
+  // 반응형 상태 객체: 속성 변경될 때마다 자동으로 DOM업데이트
+  let state = reactive({
+    num1: 0, // 첫번째 텍스트박스와 바인딩될 숫자 상태
+    num2: 0, // 두번째 텍스트박스와 바인딩될 숫자 상태
+    result: computed( () => Number(state.num1) + Number(state.num2) ), // 계산된 결과를 저장할 상태
+  });
+  // toRefs: 반응형 상태객체 -> 일반 자바스크립트 객체
+  return toRefs(state);
+}
+
 export default {
   name: 'CalculatorView3',
-  props: {
-    // 문자열 타입의 prop 예시
-    //sampleString: {
-    //  type: String,
-    //  default: ''
-    //},
-    // 숫자 타입의 prop 예시
-    //sampleNumber: {
-    //  type: Number,
-    //  default: 0
-    //},
-    // 배열 타입의 prop 예시
-    //sampleArray: {
-    //  type: Array,
-    //  default: () => []
-    //},
-    // 객체 타입의 prop 예시
-    //sampleObject: {
-    //  type: Object,
-    //  default: () => ({})
-    //}
-  },
-  components: {
-    // 추가적으로 사용할 컴포넌트들을 등록합니다.
-  },
-  data() {
-    return {
-      // 컴포넌트의 데이터를 초기화합니다.
-    };
-  },
-  watch: {
-    // sample1() {
-    //   console.log('');
-    // }
-    // 데이터를 감시하고 처리할 로직을 작성합니다.
-  },
-  computed: {
-    // sample2() {
-    //   return '';
-    // }
-    // 필요한 계산된 속성을 정의합니다.
-  },
-  methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
-  },
   setup() {
-    // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
-  },
-  created() {
-    // 컴포넌트가 생성될 때 실행될 로직을 작성합니다.
-  },
-  mounted() {
-    // 컴포넌트가 DOM에 마운트된 직후 실행될 로직을 작성합니다.
-  },
-  unmounted() {
-    // 컴포넌트가 파괴되기 전 실행될 로직을 작성합니다.
+    // 구조분해할당으로 num1, num2, result값을 얻기
+    let {num1, num2, result} = plusNumbers();
+    
+    // 구조분해된 변수값을 반환
+    return { num1, num2, result }
   }
 };
 </script>
 
 <style scoped>
-/* 스타일을 추가하세요 */
+
 </style>
