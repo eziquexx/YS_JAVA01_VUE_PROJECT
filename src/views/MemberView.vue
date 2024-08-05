@@ -2,76 +2,58 @@
   <div class="">
     <h1>회원목록</h1>
     <ul>
-      <li>
-        <p>이름: 홍길동, 나이: 18, 직업: 무직 <button>삭제</button></p>
+      <li v-for="(member, index) in members" :key="index">
+        <p>이름: {{ member.name }}, 나이: {{ member.age }}, 직업: {{ member.job }} <button @click="removeMember(index)">삭제</button></p>
       </li>
     </ul>
+  </div>
+  <div>
+    이름 <input type="text" v-model="editName" placeholder="이름"><br>
+    나이: <input type="text" v-model="editAge" placeholder="나이"><br>
+    직업 <input type="text" v-model="editJob" placeholder="직업"><br>
+    <button @click="addMember">추가</button>
   </div>
 </template>
 
 <script>
+import { useStore } from 'vuex';
+import { computed , ref} from 'vue';
+
 export default {
   name: 'MemberView',
-  props: {
-    // 문자열 타입의 prop 예시
-    //sampleString: {
-    //  type: String,
-    //  default: ''
-    //},
-    // 숫자 타입의 prop 예시
-    //sampleNumber: {
-    //  type: Number,
-    //  default: 0
-    //},
-    // 배열 타입의 prop 예시
-    //sampleArray: {
-    //  type: Array,
-    //  default: () => []
-    //},
-    // 객체 타입의 prop 예시
-    //sampleObject: {
-    //  type: Object,
-    //  default: () => ({})
-    //}
-  },
-  components: {
-    // 추가적으로 사용할 컴포넌트들을 등록합니다.
-  },
-  data() {
-    return {
-      // 컴포넌트의 데이터를 초기화합니다.
-    };
-  },
-  watch: {
-    // sample1() {
-    //   console.log('');
-    // }
-    // 데이터를 감시하고 처리할 로직을 작성합니다.
-  },
-  computed: {
-    // sample2() {
-    //   return '';
-    // }
-    // 필요한 계산된 속성을 정의합니다.
-  },
-  methods: {
-    // sample3() {
-    //   return '';
-    // }
-    // 컴포넌트에서 사용할 메서드를 정의합니다.
-  },
   setup() {
-    // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
+    const store = useStore();
+    
+    // 회원정보 목록 가져오기
+    const members = computed( () => store.state.members );
+    
+    const editName = ref('');
+    const editAge = ref('');
+    const editJob = ref('');
+
+
+    // 버튼 클릭시 멤버 추가 함수
+    const addMember = () => {
+      const data = {
+        name: editName.value,
+        age: editAge.value,
+        job: editJob.value,
+      }
+      // store에 위 함수와 data값 저장
+      store.commit('addMember', data);
+      editName.value ='';
+      editAge.value ='';
+      editJob.value ='';
+
+      console.log('회원목록 =>' + store.state.members)
+    }
+
+    const removeMember = (index) => {
+      store.commit('removeMember', index);
+    }
+
+    return { members, addMember, editName, editAge, editJob, removeMember }
   },
-  created() {
-    // 컴포넌트가 생성될 때 실행될 로직을 작성합니다.
-  },
-  mounted() {
-    // 컴포넌트가 DOM에 마운트된 직후 실행될 로직을 작성합니다.
-  },
-  unmounted() {
-    // 컴포넌트가 파괴되기 전 실행될 로직을 작성합니다.
-  }
 };
 </script>
 
