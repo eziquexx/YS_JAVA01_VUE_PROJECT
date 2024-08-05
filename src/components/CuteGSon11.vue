@@ -2,6 +2,8 @@
   <div class="gson">
     <p v-bind:style="{color:tcolor}">큰집손자1: {{ message }}</p>
     <button @click="clickMsg">장손메시지</button>
+    <p>할알버지 값 length: {{ gpapaLen }}</p>
+    <p>할아버지 값 중 가장 작은 값: {{ gpapaMin }}</p>
   </div>
 </template>
 
@@ -19,6 +21,10 @@ export default {
       tcolor: 'red',
     };
   },
+  inject: [
+    'gpapaLen', 
+    'gpapaMin',
+  ],
   watch: {
     // sample1() {
     //   console.log('');

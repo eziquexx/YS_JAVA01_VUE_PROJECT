@@ -1,6 +1,7 @@
 <template>
   <div class="son">
     <p>큰 아들 : {{ message }} {{ msg }}</p>
+    <p>할아버지 값 중 가장 작은 값: {{ gpapaMin }}</p>
     <cute-g-son11 ref="gson11" />
     <cute-g-son12 ref="gson12" @event_report="receiveEvent"/>
     <input type="text" v-model="sndMessage">
@@ -29,6 +30,7 @@ export default {
       sndMessage : '',
     };
   },
+  inject: ['gpapaMin'],
   watch: {
     // sample1() {
     //   console.log('');

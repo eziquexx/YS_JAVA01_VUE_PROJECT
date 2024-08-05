@@ -1,31 +1,42 @@
 <template>
-  <div class="gson">
-    <p v-bind:style="{color:tcolor}">작은집손자2 : {{ message }}</p>
-    <button @click="clickMsg">둘째버튼</button>
-    <input type="text" v-model="gson22msg" placeholder="아빠한테 보낼 메세지">
-    <input type="button" value="손자22" @click="clickGson22">
-    {{ gpapaLen }}
+  <div class="">
+    CalculatorView1
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CuteGSon22',
+  name: 'CalculatorView1',
   props: {
-
+    // 문자열 타입의 prop 예시
+    //sampleString: {
+    //  type: String,
+    //  default: ''
+    //},
+    // 숫자 타입의 prop 예시
+    //sampleNumber: {
+    //  type: Number,
+    //  default: 0
+    //},
+    // 배열 타입의 prop 예시
+    //sampleArray: {
+    //  type: Array,
+    //  default: () => []
+    //},
+    // 객체 타입의 prop 예시
+    //sampleObject: {
+    //  type: Object,
+    //  default: () => ({})
+    //}
   },
   components: {
     // 추가적으로 사용할 컴포넌트들을 등록합니다.
   },
   data() {
     return {
-      index: 2,
-      message: '',
-      tcolor: 'red',
-      gson22msg: '',
+      // 컴포넌트의 데이터를 초기화합니다.
     };
   },
-  inject: ['gpapaLen'],
   watch: {
     // sample1() {
     //   console.log('');
@@ -39,17 +50,10 @@ export default {
     // 필요한 계산된 속성을 정의합니다.
   },
   methods: {
-    clickMsg() {
-      this.message = '둘째가 버튼 눌렀음.'
-    },
-    changeTextColor(idx, data) {
-      if(this.index == idx) {
-        this.tcolor=data;
-      }
-    },
-    clickGson22(){
-      this.$emit('event_report', this.gson22msg);
-    }
+    // sample3() {
+    //   return '';
+    // }
+    // 컴포넌트에서 사용할 메서드를 정의합니다.
   },
   setup() {
     // Vue 3 Composition API의 setup 함수에서 추가적인 로직을 처리할 수 있습니다.
@@ -67,15 +71,5 @@ export default {
 </script>
 
 <style scoped>
-.son {
-  background-color: moccasin;
-}
-.gson {
-  background-color: yellow;
-}
-.gson button {
-  padding: 3px 6px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+/* 스타일을 추가하세요 */
 </style>

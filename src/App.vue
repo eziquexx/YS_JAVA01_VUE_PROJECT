@@ -9,6 +9,10 @@
     <router-link to="/props1">06. props 공부 - 1</router-link>
     <router-link to="/props2">07. props 공부 - 2</router-link>
     <router-link to="/popup">08. 팝업(pop up) 폼</router-link>
+    <router-link to="/calculator1"> 09. 계산기 (1)</router-link>
+    <router-link to="/calculator2"> 09. 계산기 (2)</router-link>
+    <router-link to="/calculator3"> 09. 계산기 (3)</router-link>
+    <router-link to="/calculator4"> 09. 계산기 (4)</router-link>
     <router-link to="/test"> --- 테스트페이지</router-link>
   </nav>
   <router-view/>

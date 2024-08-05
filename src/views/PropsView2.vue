@@ -6,6 +6,7 @@
     <GoodSon20 ref="son20"/>
     <input type="button" value="할아버지버튼1" @click="clickGpapa_1">
     <input type="button" value="할아버지버튼2" @click="clickGpapa_2">
+    {{ gpapaValues }}
   </div>
 </template>
 
@@ -43,7 +44,14 @@ export default {
   data() {
     return {
       message: '',
+      gpapaValues: [1, 2, 3],
     };
+  },
+  provide() {
+    return { 
+      gpapaLen: this.gpapaValues.length,
+      gpapaMin: Math.min(...this.gpapaValues),
+    }
   },
   watch: {
 

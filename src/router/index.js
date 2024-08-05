@@ -7,6 +7,10 @@ import MembershipView from '../views/MembershipView.vue'
 import PropsView from '@/views/PropsView.vue'
 import PropsView2 from '@/views/PropsView2.vue'
 import PopupView from '../views/PopupView.vue'
+import CalculatorView1 from '../views/CalculatorView1.vue'
+import CalculatorView2 from '../views/CalculatorView2.vue'
+import CalculatorView3 from '../views/CalculatorView3.vue'
+import CalculatorView4 from '../views/CalculatorView4.vue'
 
 const routes = [
   {
@@ -56,6 +60,26 @@ const routes = [
     path: '/popup',
     name: 'popup',
     component: PopupView
+  },
+  {
+    path: '/calculator1',
+    name: 'CalculatorView1',
+    component: CalculatorView1
+  },
+  {
+    path: '/calculator2',
+    name: 'CalculatorView2',
+    component: CalculatorView2
+  },
+  {
+    path: '/calculator3',
+    name: 'CalculatorView3',
+    component: CalculatorView3
+  },
+  {
+    path: '/calculator4',
+    name: 'CalculatorView4',
+    component: CalculatorView4
   }
 ]
 
